@@ -1,7 +1,10 @@
-part of '../app.dart';
+import 'package:flutter/material.dart';
 
-class _Scaffold extends StatelessWidget {
-  const _Scaffold();
+import '../../../utils/app_color.dart';
+import '../../../utils/app_text_style.dart';
+
+class AppScaffold extends StatelessWidget {
+  const AppScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
