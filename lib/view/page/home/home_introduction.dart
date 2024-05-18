@@ -8,13 +8,27 @@ class HomeIntroduction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          'I am a software engineer.',
-          style: AppTextStyle.headlineLarge,
+        RichText(
+          text: TextSpan(
+            text: AppConst.introduction.hi,
+            style: AppTextStyle.headlineLarge,
+            children: [
+              TextSpan(
+                text: AppConst.introduction.highlight,
+                style: AppTextStyle.headlineLarge.copyWith(
+                  color: AppColor.primary,
+                ),
+              ),
+              TextSpan(
+                text: AppConst.introduction.sub,
+                style: AppTextStyle.headlineLarge,
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 20),
         Text(
-          'I am a software engineer who loves to learn new things and solve problems.',
+          AppConst.introduceDetail,
           style: AppTextStyle.bodyLarge.copyWith(
             color: Colors.grey,
           ),

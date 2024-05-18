@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:t_portfolio/utils/app_text_style.dart';
+import 'package:t_portfolio/utils/constants.dart';
 
+import '../../../utils/app_color.dart';
 import '../../widgets/widgets.dart';
 
 part 'home_introduction.dart';
