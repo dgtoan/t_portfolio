@@ -1,32 +1,44 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/app_color.dart';
-import '../../../utils/app_text_style.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold({super.key});
+  const AppScaffold({
+    super.key,
+    required this.navigation,
+    required this.header,
+    required this.home,
+    required this. projects,
+    required this.skills,
+    required this.aboutMe,
+    required this.contactMe,
+    required this.footer
+  });
+
+  final Widget navigation;
+  final PreferredSizeWidget header;
+  final Widget home;
+  final Widget projects;
+  final Widget skills;
+  final Widget aboutMe;
+  final Widget contactMe;
+  final Widget footer;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.background,
+      appBar: header,
+      drawer: navigation,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: 'T',
-                  style: AppTextStyle.displayLargePrimary,
-                  children: [
-                    TextSpan(
-                      text: 'Portfolio',
-                      style: AppTextStyle.displayLarge
-                    )
-                  ]
-                )
-              ),
-            )
+            home,
+            projects,
+            skills,
+            aboutMe,
+            contactMe,
+            footer
           ],
         ),
       )
