@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:t_portfolio/utils/section_key.dart';
-import 'package:t_portfolio/view/page/page_scaffold/app_navigation.dart';
+
+import '../utils/section_key.dart';
+import 'page/page_scaffold/app_navigation.dart';
 import 'page/page.dart';
 class TPortfolio extends StatelessWidget {
   const TPortfolio({super.key});
@@ -17,14 +18,15 @@ class TPortfolio extends StatelessWidget {
         '4K'
       );
     }
+    final bool isLargeScreen = ResponsiveBreakpoints.of(context).largerThan(TABLET);
     return AppScaffold(
-      header: AppHeader(),
-      navigation: const AppNavigation(),
-      home: Home(key: SectionKey.home),
+      header: AppHeader(isLargeScreen: isLargeScreen),
+      navigation: isLargeScreen ? null : const AppNavigation(),
+      home: Home(key: SectionKey.home, isLargeScreen: isLargeScreen),
       projects: Projects(key: SectionKey.projects),
       skills: Skills(key: SectionKey.skills),
-      aboutMe: AboutMe(key: SectionKey.aboutMe),
-      contactMe: ContactMe(key: SectionKey.contactMe),
+      aboutMe: AboutMe(key: SectionKey.aboutMe, isLargeScreen: isLargeScreen),
+      contactMe: ContactMe(key: SectionKey.contactMe, isLargeScreen: isLargeScreen),
       footer: const AppFooter(),
     );
   }

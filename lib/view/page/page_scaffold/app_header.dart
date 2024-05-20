@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:t_portfolio/utils/app_color.dart';
-import 'package:t_portfolio/utils/app_text_style.dart';
-import 'package:t_portfolio/utils/section_key.dart';
-import 'package:t_portfolio/view/widgets/title_text.dart';
+
+import '../../../utils/app_color.dart';
+import '../../../utils/app_text_style.dart';
+import '../../widgets/widgets.dart';
 
 class AppHeader extends AppBar {
-  AppHeader({super.key})
+  AppHeader({super.key, required this.isLargeScreen})
     : super(
-        title: Text(
-          'T Portfolio',
-          style: AppTextStyle.titleMedium,
+        title: RichText(
+          text: TextSpan(
+            text: 'T',
+            style: AppTextStyle.titleMedium.copyWith(
+              color: AppColor.primary,
+              fontWeight: FontWeight.bold,
+            ),
+            children: [
+              TextSpan(
+                text: 'Portfolio',
+                style: AppTextStyle.titleMedium
+              ),
+            ],
+          ),
         ),
+        titleSpacing: isLargeScreen ?  16 : null,
+        centerTitle: !isLargeScreen,
         backgroundColor: AppColor.background,
-        leading: Builder(
+        leading: !isLargeScreen ? Builder(
           builder: (context) {
             return IconButton(
               icon: const Icon(
@@ -22,51 +35,12 @@ class AppHeader extends AppBar {
               onPressed: () {Scaffold.of(context).openDrawer();},
             );
           }
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => scrollToSection(SectionKey.home),
-            child: TitleText(
-              text: 'home',
-              style: AppTextStyle.titleSmall,
-            )
-          ),
-          TextButton(
-            onPressed: () => scrollToSection(SectionKey.projects),
-            child: TitleText(
-              text: 'projects',
-              style: AppTextStyle.titleSmall,
-            )
-          ),
-          TextButton(
-            onPressed: () => scrollToSection(SectionKey.skills),
-            child: TitleText(
-              text: 'skills',
-              style: AppTextStyle.titleSmall,
-            )
-          ),
-          TextButton(
-            onPressed: () => scrollToSection(SectionKey.aboutMe),
-            child: TitleText(
-              text: 'about-me',
-              style: AppTextStyle.titleSmall,
-            )
-          ),
-          TextButton(
-            onPressed: () => scrollToSection(SectionKey.contactMe),
-            child: TitleText(
-              text: 'contact-me',
-              style: AppTextStyle.titleSmall,
-            )
-          ),
-        ]
+        ) : null,
+        actions: isLargeScreen ? [
+          ...AppNavigationItem.items,
+          const SizedBox(width: 16),
+        ] : null,
       );
 
-  static void scrollToSection(GlobalKey key) {
-    Scrollable.ensureVisible(
-      key.currentContext!,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
+  final bool isLargeScreen;
 }

@@ -5,14 +5,17 @@ class ProjectsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        ProjectsItem(),
-        SizedBox(width: 20),
-        ProjectsItem(),
-        SizedBox(width: 20),
-        ProjectsItem(),
-      ],
+    return const SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          ProjectsItem(),
+          SizedBox(width: 20),
+          ProjectsItem(),
+          SizedBox(width: 20),
+          ProjectsItem(),
+        ],
+      ),
     );
   }
 }

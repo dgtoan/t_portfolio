@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../utils/app_color.dart';
 
@@ -15,7 +16,7 @@ class AppScaffold extends StatelessWidget {
     required this.footer
   });
 
-  final Widget navigation;
+  final Widget? navigation;
   final PreferredSizeWidget header;
   final Widget home;
   final Widget projects;
@@ -31,15 +32,23 @@ class AppScaffold extends StatelessWidget {
       appBar: header,
       drawer: navigation,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            home,
-            projects,
-            skills,
-            aboutMe,
-            contactMe,
-            footer
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Center(
+            child: MaxWidthBox(
+              maxWidth: 1200,
+              child: Column(
+                children: [
+                  home,
+                  projects,
+                  skills,
+                  aboutMe,
+                  contactMe,
+                  footer
+                ],
+              ),
+            ),
+          ),
         ),
       )
     );

@@ -1,3 +1,2 @@
-Responsive
-appbar navigation active
-Move text to variable
+appbar navigation active and scroll to top
+expandable card for project details and skills

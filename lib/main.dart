@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:t_portfolio/utils/app_color.dart';
-import 'package:t_portfolio/view/app.dart';
+
+import 'utils/app_color.dart';
+import 'view/app.dart';
 
 void main() {
   runApp(const MainApp());

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:t_portfolio/utils/app_color.dart';
-import 'package:t_portfolio/view/widgets/title_text.dart';
+
+import '../../utils/app_color.dart';
+import 'title_text.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({

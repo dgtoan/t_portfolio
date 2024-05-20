@@ -12,6 +12,8 @@ dependencies:
   url_launcher: ^6.2.6
   google_fonts: ^6.2.1
   responsive_framework: ^1.4.0
+  flutter_svg: ^2.0.10+1
+  infinite_carousel: ^1.1.1
 
 dev_dependencies:
   flutter_test:

@@ -5,13 +5,15 @@ class SkillsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    final List<List<Skill>> skills = Skill.skills;
+    skills.shuffle();
+    // split the skills into two rows
+    final List<Skill> firstRow = Skill.skills.sublist(0, skills.length ~/ 2).expand((element) => element).toList();
+    final List<Skill> secondRow = Skill.skills.sublist(skills.length ~/ 2).expand((element) => element).toList();
+    return Column(
       children: [
-        SkillsItem(),
-        SizedBox(width: 20),
-        SkillsItem(),
-        SizedBox(width: 20),
-        SkillsItem(),
+        SkillsCarousel(items: firstRow, isNext: true),
+        SkillsCarousel(items: secondRow, isNext: false),
       ],
     );
   }

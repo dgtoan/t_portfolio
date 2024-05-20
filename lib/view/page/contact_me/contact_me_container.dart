@@ -5,14 +5,16 @@ class ContactMeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        ContactMeItem(),
-        SizedBox(height: 20),
-        ContactMeItem(),
-        SizedBox(height: 20),
-        ContactMeItem(),
-      ],
+    return const Center(
+      child: Column(
+        children: [
+          ContactMeItem(),
+          SizedBox(height: 20),
+          ContactMeItem(),
+          SizedBox(height: 20),
+          ContactMeItem(),
+        ],
+      ),
     );
   }
 }

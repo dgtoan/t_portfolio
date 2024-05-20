@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:t_portfolio/utils/app_text_style.dart';
-import 'package:t_portfolio/utils/constants.dart';
+import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+import '../../../utils/app_text_style.dart';
+import '../../../utils/assets.dart';
+import '../../../utils/constants.dart';
 import '../../../utils/app_color.dart';
 import '../../widgets/widgets.dart';
 
@@ -10,20 +14,28 @@ part 'home_personal_image.dart';
 part 'home_quotes.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({super.key, required this.isLargeScreen});
+
+  final bool isLargeScreen;
 
   @override
   Widget build(BuildContext context) {
-    return const SectionScaffold(
+    return SectionScaffold(
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(child: HomeIntroduction()),
-              Expanded(child: HomePersonalImage()),
+          ResponsiveRowColumn(
+            layout: isLargeScreen
+              ? ResponsiveRowColumnType.ROW
+              : ResponsiveRowColumnType.COLUMN,
+            rowSpacing: 32,
+            columnSpacing: 32,
+            children: const [
+              ResponsiveRowColumnItem(rowFlex: 1,child: HomeIntroduction(),),
+              ResponsiveRowColumnItem(rowFlex: 1, child: HomePersonalImage()),
             ],
           ),
-          HomeQuotes(),
+          const SizedBox(height: 64),
+          const HomeQuotes(),
         ],
       ),
     );

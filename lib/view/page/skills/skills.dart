@@ -1,10 +1,20 @@
+import 'dart:async';
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:t_portfolio/utils/app_text_style.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:infinite_carousel/infinite_carousel.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+import '../../../utils/app_color.dart';
+import '../../../utils/app_text_style.dart';
+import '../../../utils/skill_data.dart';
 import '../../widgets/widgets.dart';
 
 part 'skills_body.dart';
 part 'skills_item.dart';
-
+part 'skills_carousel.dart';
 class Skills extends StatelessWidget {
   const Skills({super.key});
 
