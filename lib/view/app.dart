@@ -18,6 +18,22 @@ class TPortfolio extends StatelessWidget {
         '4K'
       );
     }
+
+    // show dialog noti that the website is under development
+    Future.delayed(const Duration(seconds: 1), () => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Under Development'),
+        content: const Text('This website is still under development. Some features may not work as expected.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    ));
+
     final bool isLargeScreen = ResponsiveBreakpoints.of(context).largerThan(TABLET);
     return AppScaffold(
       header: AppHeader(isLargeScreen: isLargeScreen),
